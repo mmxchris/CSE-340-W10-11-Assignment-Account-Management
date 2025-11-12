@@ -1,0 +1,409 @@
+body{ 
+  background: white;    
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#wrapper{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+#top-header { 
+  background-color: white; 
+  padding: 10px 10px;
+  justify-content: space-between;
+  display: flex;
+}
+.siteName a{
+  color:black;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+#toolts a{
+  color:black;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  padding: 2px 2px;
+}
+
+nav{
+  background-color: black;
+  
+}
+nav a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+nav a:visited{
+  color: #fff;
+}
+nav a:hover,nav a:active{
+  background: rgb(14,131,155);
+  color: #fff;
+}
+nav a:focus-visible{
+  outline: 2px solid #ffd60a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+nav a[aria-current="page"]{
+  background: rgb(14,131,155);
+  color: #fff;
+  display:flex;
+}
+nav ul{
+  margin:0;
+  padding: 0;
+  height: 50px;
+  gap: 8px;  
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+  
+}
+nav li{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding:  2px;
+}
+main{
+  flex: 1;
+}
+footer, #footer{
+  margin-top: auto;
+}
+#top-hero{
+  width:100%;
+  background-image: url("/images/vehicles/delorean.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;  
+}
+#car-info{
+  background-color: rgba(255, 255, 255, 0.85);
+  color:rgb(14, 131, 155);
+  font-size:18px;   
+}
+#car-info button{
+  background:rgb(14, 131, 155);
+  color: black;   
+  padding: 10px 18px;  
+  cursor: pointer;
+  font-size: 20px;  
+}
+#lower-hero{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: stretch;
+  padding: 0;
+}
+#upgrades, #reviews{
+  flex: 3 1 0;
+  min-width: 0;
+}
+#upgrades-list{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap: 16px;  
+}
+.upgrade{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.upgrade figure{
+  margin: 0;
+  background-color:rgb(14, 131, 155);
+  overflow: hidden;
+  aspect-ratio:  4/3;
+  padding: clamp(12px, 2vw, 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.upgrade img{
+  width: 90%;
+  height: 90%;
+  object-fit: contain; 
+  display: block;
+}
+#inv-display {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+#inv-display li {  
+  padding: 12px;
+  background-color: rgb(14, 131, 155);
+}
+#inv-display li:hover {
+  border-color: black;
+}
+.namePrice {
+  margin-bottom: 12px;
+  background-color: rgb(14, 131, 155);
+  padding: 8px;
+  text-align: left;
+}
+.namePrice hr {
+  margin: 0 0 8px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+.namePrice h2 {
+  margin: 8px 0;
+  font-size: 18px;
+  color: black;
+  text-align: left;
+}
+.namePrice a {
+  color: black;
+  text-decoration: none;
+}
+.namePrice a:hover {
+  text-decoration: underline;
+}
+.namePrice span {
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+  display: block;
+  text-align: left;
+}
+#inv-display img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0 auto;
+}
+#reviews li{
+  font-size: 20px;
+  line-height: 1.5;  
+}
+.inv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.inv-card {
+  border: 2px solid rgb(14, 131, 155);
+  padding: 12px;
+}
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+.inv-card img {
+  width: 100%;
+  height: auto;
+}
+.inv-meta p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+#inv-detail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}.inv-card-detail {  
+  padding: 20px;
+  background-color: rgb(14, 131, 155);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease;
+}
+.inv-card-detail:hover {
+  border-color: black;
+}
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.inv-title {
+  margin: 0;
+  font-size: 24px;
+  color: black;
+}
+.inv-header span {
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+.inv-card-detail img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+.inv-year,
+.inv-desc,
+.inv-miles,
+.inv-color {
+  margin: 6px 0;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+.login-box,
+.register-box,
+.add-classification-box,
+.add-inventory-box{
+  max-width: 500px;
+  margin: 50px auto;
+}
+.login-box form,
+.register-box form,
+.add-classification-box form,
+.add-inventory-box form{
+  background: rgb(14, 131, 155);
+  padding: 40px;
+  border-radius: 10px;
+}
+.login-box h2,
+.register-box h2,
+.add-classification-box h2,
+.add-inventory-box h2 {
+  color: black;
+  margin: 0 0 20px 0;
+  font-size: 24px;
+}
+.login-box label,
+.register-box label,
+.add-classification-box label,
+.add-inventory-box label{
+  display: block;
+  color: black;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.login-box input,
+.register-box input,
+.add-classification-box input,
+.add-inventory-box input{
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.login-box button,
+.register-box button,
+.add-classification-box button,
+.add-inventory-box button{
+  display: block;
+  margin: 30px auto 20px;
+  padding: 10px 40px;
+  background: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.login-box p,
+.register-box p,
+.add-classification-box p,
+.add-inventory-box p{
+  font-size: 16px;
+  text-align: center;
+  color: black;
+  margin-top: 20px;
+}
+.login-box a,
+.register-box a,
+.add-classification-box a,
+.add-inventory-box a{
+  font-size: 16px;
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.vehicle-management {
+    margin-left: 40px;
+}
+
+@media (min-width: 660px) {
+  body{
+    background-image:url("/images/site/small_check.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  #wrapper {
+  margin: 24px 96px;
+  border: 6px solid;
+  border-radius: 6px;
+  border-color:rgb(14, 131, 155);
+  background:white;
+  padding: 6px;
+  min-height: calc(100vh - 48px);
+} 
+#top-hero{
+  min-height: 50vh;
+} 
+  #lower-hero{
+    flex-direction: row;
+    align-items: stretch;
+  }
+  #upgrades, #reviews{
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+  }
+  #inv-display {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .inv-list {
+    grid-template-columns: repeat(2, 1fr);
+  }  
+}
+

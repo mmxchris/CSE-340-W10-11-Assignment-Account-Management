@@ -1,0 +1,24 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<%- messages() %> 
+
+<div class="add-classification-box">
+  <form action="/inv/add-classification" method="POST">
+    <label for="classification_name">Vehicle Classification</label>
+    <span>The classification must not contain any special characters or spaces.</span>
+    <input type="text" name="classification_name" id="classification_name" required pattern="[A-Za-z0-9]*">   
+    <button type="submit">Submit</button>
+  </form>
+</div>
