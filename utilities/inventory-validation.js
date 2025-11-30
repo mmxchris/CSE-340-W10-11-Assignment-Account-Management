@@ -29,10 +29,11 @@ const validate = {}
          body("inv_year")
              .trim()             
              .notEmpty()
-             .withMessage("Please provide a year.")
-             .isInt({ min: 0 })
-             .withMessage("Year must be a positive number with no decimals."), //on error this message is sent.
-             
+             .withMessage("Please provide a year.") //on error this message is sent.
+             .isInt({ min: 1900, max: 9999 })
+             .withMessage("Year must be exactly 4 digits and between 1900-9999.")
+             .isLength({ min: 4, max: 4 })
+             .withMessage("Year must be exactly 4 digits."),             
  
          //description is required and must be string
          body("inv_description")
@@ -93,18 +94,20 @@ const validate = {}
  }
 
  /* ******************************
- * Check data and return errors or continue to registration
+ * Check data and return errors or continue to add
  * ***************************** */
  validate.checkInventoryData = async (req, res, next) => {
-    const { inv_make,
-            inv_model, inv_year,
-            inv_description,
-            inv_thumbnail, inv_image,
-            inv_price,
-            inv_miles,
-            inv_color,
-            classification_id
-        } = req.body
+    const {
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_thumbnail, inv_image,
+         inv_price,
+         inv_miles,
+        inv_color,
+        classification_id
+    } = req.body
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -115,6 +118,49 @@ const validate = {}
             title: "Add Inventory",
             nav,
             classSelect,
+            inv_make,
+            inv_model,
+            inv_year,
+            inv_description,
+            inv_thumbnail,
+            inv_image,
+            inv_price,
+            inv_miles,
+            inv_color,
+            classification_id
+        })
+        return
+    }
+    next()
+}
+
+ /* ******************************
+ * Check data and return errors or continue to update
+ * ***************************** */
+ validate.checkUpdateData = async (req, res, next) => {
+    const {
+        inv_id,
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_thumbnail, inv_image,
+        inv_price,
+        inv_miles,
+        inv_color,
+        classification_id
+    } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        let classSelect = await utilities.buildClassificationList(classification_id)
+        res.render("./inventory/edit-inventory", {
+            errors,
+            title: "Edit " + inv_make + " " + inv_model,
+            nav,
+            classSelect,
+            inv_id,
             inv_make,
             inv_model,
             inv_year,
