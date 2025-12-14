@@ -16,14 +16,21 @@
 
 <div class="register-box">
     <h3>Caution: This will permanently delete this account.</h3>
-  <form id="updateForm" action="/account/admin/delete" method="POST">       
-    <label>First name</label>
-    <input type="text" name="account_firstname" id="account_firstname" required value="<%= accountData.account_firstname %>"readonly>
-    <label>Last name</label>
-    <input type="text" name="account_lastname" id="account_lastname" required value="<%= accountData.account_lastname %>" readonly>
-    <label>Email address</label>
-    <input type="email" name="account_email" id="account_email" required value="<%= accountData.account_email %>"readonly>
-    <button type="submit">Delete</button>
-    <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+    <form id="updateForm" action="/account/admin/delete" method="POST">
+         <label for="account_firstname">First name</label>
+         <input type="text" name="account_firstname" id="account_firstname"
+        required value="<%= accountData.account_firstname %>"readonly>
+
+        <label for="account_lastname">Last name</label>
+        <input type="text" name="account_lastname" id="account_lastname"
+        required value="<%= accountData.account_lastname %>" readonly>
+
+        <label for="account_email">Email address</label>
+        <input type="email" name="account_email" id="account_email"
+        required value="<%= accountData.account_email %>"readonly>
+
+        <button type="submit">Delete</button>
+        <input type="hidden" name="account_id"
+         value="<%= accountData.account_id %>">
     </form>    
 </div>
