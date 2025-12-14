@@ -1,0 +1,44 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<%- messages() %>
+
+<div class="account-management">
+  <% if (users && users.length > 0) { %>
+    <table id="accountDisplay">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Modify</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+     <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.account_firstname %></td>
+          <td><%= user.account_lastname %></td>
+          <td><%= user.account_email %></td>
+          <td><a href="/account/admin/edit/<%= user.account_id %>" title="Click to update">Modify</a></td>
+          <td><a href="/account/admin/delete/<%= user.account_id %>" title="Click to delete">Delete</a></td>
+        </tr>
+      <% }) %>
+     </tbody>     
+    </table>
+  <% } else { %>
+    <p>No Accounts Found.</p>%>
+    <% } %>
+</div>

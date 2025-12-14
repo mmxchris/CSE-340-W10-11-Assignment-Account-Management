@@ -369,19 +369,24 @@ footer, #footer{
 .vehicle-management {
     margin-left: 40px;
 }
-#inventoryDisplay {
+#inventoryDisplay,#accountDisplay {
   width: 100%;
   margin: 20px 0 50px 0;
   border-collapse: collapse;
 }
-#inventoryDisplay th,
-#inventoryDisplay td {
+#inventoryDisplay th, #inventoryDisplay td,
+#accountDisplay th, #accountDisplay td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+#inventoryDisplay td, #accountDisplay td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
-#inventoryDisplay th {
+#inventoryDisplay th, #accountDisplay th{
   background-color: rgb(14, 131, 155);
   font-weight: bold;
 }

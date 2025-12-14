@@ -231,4 +231,51 @@ validate.checkPasswordData = async (req, res, next) => {
   next()
 }
 
+/*  **********************************
+  *  Edit Account Type Validation Rules
+  * ********************************* */
+ validate.accountTypeRules = () => {
+    return [
+      // account type is required and must be string
+      body("account_id")
+        .trim()
+        .isInt({ min: 1 })     
+        .withMessage("Invalid account id."), // on error this message is sent.
+
+      body("account_type")
+        .trim()
+        .notEmpty()     
+        .withMessage("Invalid account type."), // on error this message is sent.
+
+      body("account_type").custom(async value => {
+        const accountTypes = await accountModel.getAccountTypes()
+        if(!accountTypes.includes(value)) {
+          throw new Error("Invalid account type.")}
+          return true
+      })
+    ] 
+ }
+
+validate.checkAccountType = async (req, res, next) => {
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    const account_id = parseInt(req.body.account_id)
+    const editAccountData = await accountModel.getAccountDetail(account_id)
+    const accountTypes = await accountModel.getAccountTypes() 
+    let nav = await utilities.getNav()
+    
+    res.render("account/admin-edit-account", {
+      title: "Edit User Account: " + editAccountData.account_firstname + " "
+      + editAccountData.account_lastname,
+      nav,
+      errors,
+      editAccountData,
+      accountTypes
+    })
+    return
+  }  
+  next()
+ }
+
 module.exports = validate

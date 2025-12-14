@@ -171,4 +171,20 @@ Util.checkAccountType = (req, res, next) => {
     return res.redirect("/account/login")
   }
 }
+
+Util.checkIfAdmin = (req, res, next) => {
+  if (res.locals.loggedin && res.locals.accountData) {
+    const accountType = res.locals.accountData.account_type
+    if (accountType === 'Admin') {
+      next()
+    } else {
+      req.flash("notice", "You do not have access to this page.")
+      return res.redirect("/account/login")
+    }
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
 module.exports = Util

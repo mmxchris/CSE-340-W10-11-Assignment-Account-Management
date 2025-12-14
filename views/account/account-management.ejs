@@ -22,3 +22,7 @@
        <h3>Inventory Management</h3>
        <p><a href="/inv/">Access Inventory Management</a></p>
  <% } %>     
+ <% if (locals.loggedin && (locals.accountData.account_type === 'Admin')) { %>
+       <h3>User Account Management</h3>
+       <p><a href="/account/admin">User Management</a></p>
+ <% } %>

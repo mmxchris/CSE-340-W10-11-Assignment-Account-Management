@@ -50,5 +50,35 @@ router.post(
   regValidate.checkPasswordData,
   utilities.handleErrors(accountController.editAccountPassword)
 )
+//Route to Build User Management View
+router.get("/admin", utilities.checkIfAdmin,
+    utilities.handleErrors(accountController.buildUserManagement))
+
+//Route to Build Admin Edit Account View
+router.get("/admin/edit/:account_id", utilities.checkIfAdmin,
+    utilities.handleErrors(accountController.buildAdminEditAccount))
+
+//Route to process admin edit account form
+router.post(
+  "/admin/edit/update",
+  utilities.checkIfAdmin,
+  regValidate.accountTypeRules(),
+  regValidate.checkAccountType,
+  utilities.handleErrors(accountController.updateAccountType))
+
+//Route to build password reset view
+router.post("/admin/reset-password",
+  utilities.checkIfAdmin,
+  utilities.handleErrors(accountController.resetPassword))
+
+//Route to delete account
+router.get("/admin/delete/:account_id", utilities.checkIfAdmin,
+    utilities.handleErrors(accountController.buildDeleteAccount))
+
+//Route to process delete account form
+router.post("/admin/delete", utilities.checkIfAdmin,
+    utilities.handleErrors(accountController.deleteAccount))
+
+
 
 module.exports = router;
