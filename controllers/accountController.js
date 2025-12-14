@@ -293,6 +293,9 @@ async function buildAdminEditAccount(req, res, next) {
   })
 }
 
+/* ****************************************
+*  Process update account type
+* *************************************** */
 async function updateAccountType(req, res, next) {
   const account_id = parseInt(req.body.account_id)
   const newAccountType = req.body.account_type
@@ -316,7 +319,7 @@ async function resetPassword(req, res, next) {
   const accountData = await accountModel.getAccountDetail(account_id)
   const accountTypes = await accountModel.getAccountTypes()
   const account_password = process.env.DEFAULT_PASSWORD
-  //Validate default account password. This is done i nthe controller due to express-validator
+  //Validate default account password. This is done in the controller due to express-validator
   //being designed to validate request data. The default password is coming from an environment variable 
   if (!account_password) {
     req.flash("notice", "Sorry, the password reset failed.")

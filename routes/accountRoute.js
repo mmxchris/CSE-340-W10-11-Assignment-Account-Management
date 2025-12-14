@@ -66,7 +66,7 @@ router.post(
   regValidate.checkAccountType,
   utilities.handleErrors(accountController.updateAccountType))
 
-//Route to build password reset view
+//Route to process password reset reset
 router.post("/admin/reset-password",
   utilities.checkIfAdmin,
   utilities.handleErrors(accountController.resetPassword))
