@@ -394,14 +394,14 @@ async function resetPassword(req, res, next) {
 * *************************************** */
 async function buildDeleteAccount(req, res, next) {
   const account_id = parseInt(req.params.account_id)  
-  const accountData = await accountModel.getAccountDetail(account_id)
+  const deleteAccountData = await accountModel.getAccountDetail(account_id)
   let nav = await utilities.getNav()
   res.render("account/delete-account", {
-    title: "Delete User Account: " + accountData.account_firstname + " "
-    + accountData.account_lastname,
+    title: "Delete User Account: " + deleteAccountData.account_firstname + " "
+    + deleteAccountData.account_lastname,
     nav,
     errors: null,
-    accountData
+    deleteAccountData
   })
 }
 
